@@ -15,6 +15,7 @@ Needs installed [composer](https://getcomposer.org/), [local DDEV environment](h
 ```
 $ git clone git@github.com:samowitsch/pagenode-composer-skeleton.git
 $ cd pagenode-composer-skeleton
+$ composer install
 $ ddev start
 $ ddev launch
 ```
@@ -30,6 +31,7 @@ Change the name in ```.ddev/config.yaml``` to YOUR-PROJECT-NAME.
 
 ```
 $ cd YOUR-PROJECT-NAME
+$ composer install
 $ ddev start
 $ ddev launch
 ```
