@@ -38,6 +38,11 @@ $ ddev launch
 
 A basic ```andres-montanez/magallanes``` deployment config is included. Modify it to your needs for further documentation [see here](https://www.magephp.com/).
 
+Some example commands:
+
+* ```./bin/mage deploy production```
+* ```./bin/mage releases:list production```
+
 ## Build toolchain
 
 A simple example ```Makefile``` is in this repo. No fancy bleeding edge stuff (e.g. webpack). Only simple basic concatenation and minify.
