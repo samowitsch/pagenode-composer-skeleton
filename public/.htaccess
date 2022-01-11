@@ -1,0 +1,35 @@
+<IfModule mod_rewrite.c>
+	RewriteEngine on
+
+    #RewriteCond %{HTTPS} off
+    #RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    #RewriteBase /
+
+    #
+    # Rewrite to have friendly urls to img.php, edit it to suite your environment.
+    #
+    # The example is set up as following.
+    #
+    #  img                 A directory where all images are stored
+    #  img/me.jpg          Access a image as usually.
+    #  img/img.php         This is where I choose to place img.php (and img_config.php).
+    #  image/me.jpg        Access a image though img.php using htaccess rewrite.
+    #  image/me.jpg?w=300  Using options to img.php.
+    #
+    # Subdirectories also work.
+    #  img/me/me.jpg          Direct access to the image.
+    #  image/me/me.jpg        Accessed through img.php.
+    #  image/me/me.jpg?w=300  Using options to img.php.
+    #
+    RewriteRule ^image/([0-9]+)/([0-9]+)/(.*)$        /imgp.php?src=$3&w=$1&h=$2&crop-to-fit [QSA,NC,L]
+
+
+
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteRule ^(.*)$ index.php
+</IfModule>
+
+# Prevent file browsing
+Options -Indexes -MultiViews

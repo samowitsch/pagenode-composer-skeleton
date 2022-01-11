@@ -1,0 +1,13 @@
+# PhpStorm stuff
+.idea
+# macOS stuff
+.DS_Store
+# mage stuff
+deploy-log/*
+# composer stuff
+bin/
+vendor/
+# image cache
+cache/*
+
+composer.lock

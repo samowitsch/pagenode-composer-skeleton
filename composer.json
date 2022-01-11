@@ -1,0 +1,22 @@
+{
+  "name": "csg/phoboslab-pagenode",
+  "require": {
+    "erusev/parsedown": "^1.7",
+    "symfony/mailer": "^6.0"
+  },
+  "require-dev": {
+    "andres-montanez/magallanes": "^4.0",
+    "symfony/var-dumper": "^6.0"
+  },
+  "authors": [
+    {
+      "name": "Christian Sonntag",
+      "email": "info@motions-media.de"
+    }
+  ],
+  "config": {
+    "bin-dir": "bin",
+    "sort-packages": true,
+    "vendor-dir": "vendor"
+  }
+}
