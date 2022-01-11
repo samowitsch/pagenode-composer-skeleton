@@ -34,6 +34,32 @@ $ ddev start
 $ ddev launch
 ```
 
+## public folder structure
+
+This is the basic folder structure of ```/public```.
+
+```shell
+.
+├── assets
+│   ├── css
+│   │   └── styles.css
+│   └── js
+│       └── main.js
+├── img
+│   └── dummy-image.jpg
+├── imgp.php
+├── index.php
+├── nodes               // in the nodes folder are all markdown files for landingpages
+│   ├── 404.md          // 404 error page
+│   └── home.md         // /home or / page
+├── process.php
+└── templates           // here are the templates
+    ├── node.html.php
+    └── partials
+        ├── resources.footer.html.php
+        └── resources.header.html.php
+```
+
 ## Deployment
 
 A basic ```andres-montanez/magallanes``` deployment config is included. Modify it to your needs for further documentation [see here](https://www.magephp.com/).
