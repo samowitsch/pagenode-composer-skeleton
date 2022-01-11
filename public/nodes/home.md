@@ -50,6 +50,17 @@ Some example commands:
 * ```./bin/mage deploy production```
 * ```./bin/mage releases:list production```
 
+> **Note:** maybe a ssh connection with use of ssh key is needed. depending to your hoster it is possible to store a public key.
+
+Example ssh ~/config entry:
+
+```shell
+Host CONFIGURATION-NAME
+    HostName YOUR.HOST.NAME
+    User YOUR.USER.NAME
+    IdentityFile /home/[YOUR.LOCAL.USERNAME]/.ssh/id_rsa
+```
+
 ## Build toolchain
 
 A simple example ```Makefile``` is in this repo. No fancy bleeding edge stuff (e.g. webpack). Only simple basic concatenation and minify.

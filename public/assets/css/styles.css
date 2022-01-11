@@ -3,7 +3,11 @@ body {
     margin: 0 150px;
 }
 
-code {
+code, blockquote {
     background-color: #eee;
     padding: 2px 4px;
+}
+
+blockquote {
+    border-left: 2px solid #aaa;
 }
