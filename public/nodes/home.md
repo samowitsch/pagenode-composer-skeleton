@@ -49,6 +49,10 @@ A basic ```andres-montanez/magallanes``` deployment config is included. Modify i
 
 A simple example ```Makefile``` is in this repo. No fancy bleeding edge stuff (e.g. webpack). Only simple basic concatenation and minify.
 
+## Email process.php
+
+Included is a simple process.php to handle simple contact forms using xhr for example with e.g. [jQuery Form Plugin](https://github.com/jquery-form/form).
+
 ## Images
 
 ### using original size
