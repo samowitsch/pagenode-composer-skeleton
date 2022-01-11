@@ -10,4 +10,6 @@ code, blockquote {
 
 blockquote {
     border-left: 2px solid #aaa;
+    margin: 0;
+    padding: 2px 10px;
 }
