@@ -73,9 +73,9 @@ Included is a simple process.php to handle simple contact forms using xhr for ex
 
 ### using original size
 
-```<img src="/assets/images/dummy-image.jpg" loading="lazy" title="Dummy image original size" />```
+```<img src="/img/dummy-image.jpg" loading="lazy" title="Dummy image original size" />```
 
-<img src="/assets/images/dummy-image.jpg" loading="lazy" title="Dummy image original size" />
+<img src="/img/dummy-image.jpg" loading="lazy" title="Dummy image original size" />
 
 ### using included CIMAGE to crop images
 
