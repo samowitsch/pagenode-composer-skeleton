@@ -39,9 +39,7 @@ magephp:
       
       # remote -> e.g. Warming cache, installing assets, switching configuration
       on-deploy:
-#        - fs/link: { from: '../../../../www.bistro-grammophon.de/fileadmin', to: 'public/fileadmin' }
-#        - fs/link: { from: '../../../../www.bistro-grammophon.de/uploads', to: 'public/uploads' }
-#        - fs/link: { from: '../../../../www.bistro-grammophon.de/typo3temp', to: 'public/typo3temp' }
+#        - fs/link: { from: '../../../../www.whatever-folder.de/assets', to: 'public/assets' }
 #        - symfony/cache-warmup: { env: 'dev' }
 #        - symfony/assets-install: { env: 'dev' }
 #        - fs/copy: { from: '../../../shared/images', to: 'web/images', flags: {} }
