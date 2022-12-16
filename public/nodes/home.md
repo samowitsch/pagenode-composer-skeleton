@@ -52,12 +52,13 @@ This is the basic folder structure of ```/public```.
 ├── assets
 │   ├── css
 │   │   └── styles.css
+│   ├── fonts
 │   └── js
 │       └── main.js
 ├── img
 │   └── dummy-image.jpg
-├── imgp.php
-├── index.php
+├── imgp.php            // the CIMAGE script
+├── index.php           // the entry point with defined routes
 ├── nodes               // in the nodes folder are all markdown files for landingpages
 │   ├── 404.md          // 404 error page
 │   └── home.md         // /home or / page
