@@ -257,7 +257,7 @@ class PN_Selector
                 ? array_map('trim', explode(',', $params['tags']))
                 : $params['tags'];
             $index = array_filter($index, function ($n) use ($tags) {
-                return !array_diff($tags, $n['tags']);
+                return !array_udiff($tags, $n['tags'], 'strcasecmp');
             });
         }
 
@@ -572,7 +572,7 @@ class PN_ParsedownSyntaxHighlight extends Parsedown
             // Make the bold assumption that an all uppercase word has a
             // special meaning
             '/(?<!\w|\$|>)(
-				[A-Z_0-9]{2,}
+				[A-Z_][A-Z_0-9]+
 			)(?!\w)/x'
             => '<span class="def">$1</span>'
         ];
