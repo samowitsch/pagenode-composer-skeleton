@@ -15,7 +15,10 @@ if (!defined('PN_DATE_FORMAT'))
     define('PN_DATE_FORMAT', 'M d, Y - H:i:s');
 
 if (!defined('PN_DATE_FORMAT_LOCALIZED'))
-    define('PN_DATE_FORMAT_LOCALIZED', '%B %e, %Y - %H:%M:%S');
+    /**
+     * @see https://unicode-org.github.io/icu/userguide/format_parse/datetime/
+     */
+    define('PN_DATE_FORMAT_LOCALIZED', 'EEEE, dd.MM.yyyy');
 
 if (!defined('PN_SYNTAX_HIGHLIGHT_LANGS'))
     define('PN_SYNTAX_HIGHLIGHT_LANGS', 'php|js|sql|c');
@@ -352,9 +355,25 @@ class PN_DateTime
         return htmlSpecialChars(date($format, $this->timestamp));
     }
 
-    public function formatLocalized($format = PN_DATE_FORMAT_LOCALIZED)
+    /**
+     * https://unicode-org.github.io/icu/userguide/format_parse/datetime/
+     *
+     * @param string $format
+     * @param string $lang
+     * @return string
+     */
+    public function formatLocalized(string $format = PN_DATE_FORMAT_LOCALIZED, string $lang = 'de_DE')
     {
-        return htmlSpecialChars(strftime($format, $this->timestamp));
+        $fmt = new IntlDateFormatter(
+            $lang,
+            IntlDateFormatter::FULL,
+            IntlDateFormatter::FULL,
+            'Europe/Berlin',
+            IntlDateFormatter::GREGORIAN,
+            $format
+        );
+
+        return htmlSpecialChars(datefmt_format($fmt, $this->timestamp));
     }
 
     public function __toString()
