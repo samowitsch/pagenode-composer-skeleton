@@ -1,5 +1,6 @@
 {
   "name": "csg/phoboslab-pagenode",
+  "description": "A project base skeleton using pagenode [https://pagenode.org/] [https://github.com/phoboslab/pagenode].",
   "require": {
     "erusev/parsedown": "^1.7",
     "symfony/mailer": "^6.0"
