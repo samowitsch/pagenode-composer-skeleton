@@ -9,5 +9,6 @@ bin/
 vendor/
 # image cache
 cache/*
+!cache/.gitkeep
 
 composer.lock
