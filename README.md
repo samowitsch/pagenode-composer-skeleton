@@ -12,24 +12,25 @@ Needs installed [composer](https://getcomposer.org/), [local DDEV environment](h
 
 ## Installation
 
-```
+```shell
 $ git clone git@github.com:samowitsch/pagenode-composer-skeleton.git
 $ cd pagenode-composer-skeleton
 $ composer install
 $ ddev start
 $ ddev launch
 ```
+
 ## Installation with custom project name
 
 If you wants to use a custom project name instead then do the following:
 
-```
+```shell
 $ git clone git@github.com:samowitsch/pagenode-composer-skeleton.git YOUR-PROJECT-NAME
 ```
 
 Change the name in ```.ddev/config.yaml``` to YOUR-PROJECT-NAME.
 
-```
+```shell
 $ cd YOUR-PROJECT-NAME
 $ composer install
 $ ddev start
@@ -103,3 +104,8 @@ This skeleton includes [Image conversion on the fly using PHP](https://github.co
 
 ```<img src="/image/400/300/dummy-image.jpg" loading="lazy" title="Dummy image cropped size" />```
 
+## Importer
+
+### Wordpress Importer
+
+See [Wordpress importer readme](README-wordpress-importer.md).

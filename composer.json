@@ -2,12 +2,16 @@
   "name": "csg/phoboslab-pagenode",
   "description": "A project base skeleton using pagenode [https://pagenode.org/] [https://github.com/phoboslab/pagenode].",
   "require": {
+    "ext-intl": "*",
     "erusev/parsedown": "^1.7",
+    "symfony/console": "^6.0",
+    "symfony/filesystem": "^6.4",
     "symfony/mailer": "^6.0",
-    "ext-intl": "*"
+    "symfony/yaml": "^6.0"
   },
   "require-dev": {
-    "andres-montanez/magallanes": "^4.0",
+    "andres-montanez/magallanes": "^5.0",
+    "doctrine/dbal": "^4.0",
     "symfony/var-dumper": "^6.0"
   },
   "authors": [
@@ -20,5 +24,10 @@
     "bin-dir": "bin",
     "sort-packages": true,
     "vendor-dir": "vendor"
+  },
+  "autoload": {
+    "psr-4": {
+      "Pagenode\\Importer\\": "src/Pagenode/Importer"
+    }
   }
 }

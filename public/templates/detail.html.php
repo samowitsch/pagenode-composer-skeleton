@@ -11,14 +11,13 @@
 </head>
 
 <body>
-    <ul>
-        <?php foreach ($posts as $key => $post) { ?>
-            <li>[<?= $post->postId ?>] <a href="/<?= $post->fullPath ?>" id="<?= $post->title ?>" title="<?= $post->title ?>">
-            <?= $post->title ?>
-            </a>[<?= $post->thumbnail ?>]
-            </li>
-        <?php } ?>
-    </ul>
+    <?php if ($node->thumbnail) { ?>
+        <img src="<?= $node->thumbnail ?>" title="thumbnail" />
+    <?php } ?>
+
+    <p><?= $node->date ?></p>
+    <p>Categories: <?= $node->categories ?></p>
+    <p>Tags: <?php echo implode(', ', $node->tags); ?></p>
 
     <?= $node->body ?? 'EMPTY?' ?>
 

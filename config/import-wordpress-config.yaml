@@ -1,0 +1,23 @@
+paths:
+  # the folder where the Pagenode markdown files should be generated
+  exportFolder: '/nodes/blog'
+
+  # the complete folder with files of the wordpress instance to import.
+  importFolder: '/import/www.motions-media.de'
+db:
+  connectionParams:
+    # DDEV db settings
+    dbname: 'db'
+    user: 'db'
+    password: 'db'
+    driver: 'pdo_mysql'
+    
+    # db configs: un- and/or comment the used variant you will prefer
+
+    # 1. DDEV web container config -> used with import-wordpress.php 
+    host: 'db'
+    
+    # 2. DDEV config from host -> used with ./bin/console import:wordpress
+    #host: '127.0.0.1'
+    #port: 32786
+  

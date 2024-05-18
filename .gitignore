@@ -6,9 +6,21 @@
 deploy-log/*
 # composer stuff
 bin/
+!bin/console
 vendor/
 # image cache
 cache/*
 !cache/.gitkeep
+
+import/*
+!import/.gitkeep
+
+# adapt/remove this section after WP import
+public/nodes/blog/*
+!public/nodes/blog/.gitkeep
+
+# adapt this section after WP import
+public/uploads/*
+!public/uploads/.gitignore
 
 composer.lock
