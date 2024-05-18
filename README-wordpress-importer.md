@@ -30,7 +30,18 @@ I assume that you also use [DDEV](https://ddev.readthedocs.io/en/stable/) as dev
 
 ### show DDEV settings
 
-Use ```ddev describe``` to show current database settings. Change [/config/import-wordpress-config.yaml](/config/import-wordpress-config.yaml) to your needs.
+Use ```ddev describe``` to show current database settings. Change [/config/import-wordpress-config.yaml](/config/import-wordpress-config.yaml) to your needs.  
+InDocker db settings will always be the same. The Host port can vary after each ```ddev start``` or ```ddev restart```
+
+```shell
+...
+├────┼──────┼───────────────────────┼────────────────────┤
+│ db │ OK   │ InDocker: db:3306     │ mariadb:10.3       │
+│    │      │ Host: 127.0.0.1:32770 │ User/Pass: 'db/db' │
+│    │      │                       │ or 'root/root'     │
+├────┼──────┼───────────────────────┼────────────────────┤
+...
+```
 
 ### second Import with public import-wordpress.php
 
