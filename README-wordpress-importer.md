@@ -1,11 +1,22 @@
 # Wordpress importer
 
-The importer generates Markdown files of Wordpress posts for [Pagenode](https://pagenode.org/).
+What this importer do:
+
+* generates [Pagenode](https://pagenode.org/) markdown files from Wordpress db posts
+* transforms/fixes Wordpress asset paths and makes them relative
+* transforms Wordpress caption short tags
+* transforms Wordpress slider short tags
+* transforms/sanitize Wordpress content blocks comments
+* transform/sanitize ```<pre>``` tags
+* copy Wordpress assets to new location in this project
+
+> ⚠️  IMPORTANT: this importer fits currently the needs for my Wordpress instance (and installed plugins) and will maybe not work for you!  
+> But if you like you can contribute to this project 😜
 
 ## Requirements
 
 The complete Wordpress instance with database dump inside the ```import``` folder.  
-For example ```import/www.wordpress-instance-to-import.de/*```
+For example: ```import/www.your-wordpress-instance.de/*``` or simple ```import/htdocs``` or whatever 😜
 
 ## Usage
 
@@ -23,7 +34,7 @@ Use ```ddev describe``` to show current database settings. Change [/config/impor
 
 ### second Import with public import-wordpress.php
 
-Execute importer in public folder ```https://pagenode-composer-skeleton.ddev.site:8443/import-wordpress.php```
+Execute importer in public folder ```https://your-ddev-project-name.ddev.site:8443/import-wordpress.php```
 
 > ⚠️  Change url to your local DDEV configuration. See: [/.ddev/config.yaml](/.ddev/config.yaml)  
 > ⚠️  Check/change configuration. See: [/config/import-wordpress-config.yaml](/config/import-wordpress-config.yaml)

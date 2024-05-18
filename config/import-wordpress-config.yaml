@@ -3,7 +3,7 @@ paths:
   exportFolder: '/nodes/blog'
 
   # the complete folder with files of the wordpress instance to import.
-  importFolder: '/import/www.motions-media.de'
+  importFolder: '/import/YOUR_WP_FOLDER_NAME'
 db:
   connectionParams:
     # DDEV db settings
