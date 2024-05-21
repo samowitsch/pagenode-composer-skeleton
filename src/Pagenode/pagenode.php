@@ -515,7 +515,7 @@ class PN_ParsedownSyntaxHighlight extends Parsedown
 {
     public static function SyntaxHighlight($s)
     {
-        $s = htmlSpecialChars($s) . "\n";
+        $s = htmlSpecialChars($s, ENT_COMPAT) . "\n";
         $s = str_replace('\\\\', '\\\\<e>', $s); // break escaped backslashes
 
         $tokens = [];
