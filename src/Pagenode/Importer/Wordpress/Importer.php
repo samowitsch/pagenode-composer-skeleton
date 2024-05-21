@@ -107,7 +107,7 @@ class Importer
     public function copyAssets()
     {
         foreach ($this->filesToCopy as $file) {
-            $src = $_SERVER["DOCUMENT_ROOT"] . '/../import/www.motions-media.de/wp-content';
+            $src = $_SERVER["DOCUMENT_ROOT"] . '/..' . $this->settings['paths']['importFolder'] . '/wp-content';
             $dest = $_SERVER["DOCUMENT_ROOT"];
 
             if (!file_exists(dirname($dest . $file))) {
