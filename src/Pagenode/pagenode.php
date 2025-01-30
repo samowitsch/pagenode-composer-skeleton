@@ -152,41 +152,7 @@ class PN_Selector
 
     protected function loadMetaFromFile($path)
     {
-        $meta = [];
-        $file = file_get_contents($path);
-        if (preg_match('/(.*?)^---\s*$/ms', $file, $metaSection)) {
-            preg_match_all('/^(\w+):(.*)$/m', $metaSection[1], $metaAttribs);
-            foreach ($metaAttribs[1] as $i => $key) {
-                $meta[$key] = trim($metaAttribs[2][$i]);
-            }
-        }
-
-        $meta['tags'] = !empty($meta['tags'])
-            ? array_map('trim', explode(',', $meta['tags']))
-            : [];
-
-
-        if (
-            !empty($meta['date']) &&
-            preg_match(
-                '/(\d{4})[\.\-](\d{2})[\.\-](\d{2})( (\d{2}):(\d{2}))?/',
-                $meta['date'],
-                $dateMatch
-            )
-        ) {
-            $y = $dateMatch[1];
-            $m = $dateMatch[2];
-            $d = $dateMatch[3];
-            $h = !empty($dateMatch[5]) ? $dateMatch[5] : 0;
-            $i = !empty($dateMatch[6]) ? $dateMatch[6] : 0;
-            $meta['date'] = mktime($h, $i, 0, $m, $d, $y);
-        } else {
-            $meta['date'] = filemtime($path);
-        }
-
-        $meta['active'] = empty($meta['active']) || $meta['active'] !== 'false';
-
-        return $meta;
+        return PN_FileReader::ReadMeta($path);
     }
 
 
@@ -236,9 +202,9 @@ class PN_Selector
         // just year, year & month or year & month & day.
 
         if (!empty($params['date'])) {
-            $y = $params['date'][0] ?? $params['date'];
-            $m = $params['date'][1] ?? null;
-            $d = $params['date'][2] ?? null;
+            $y = (int) $params['date'][0] ?? $params['date'];
+            $m = (int) $params['date'][1] ?? 0;
+            $d = (int) $params['date'][2] ?? 0;
             if (preg_match('/(\d{4}).(\d{2}).(\d{2})/', $y, $match)) {
                 $y = $match[1];
                 $m = $match[2];
@@ -413,11 +379,7 @@ class PN_Node
     protected function loadBody()
     {
         self::$DebugOpenedNodes[] = $this->path;
-        $file = file_get_contents($this->path);
-
-        $markdown = (preg_match('/^---\s*$(.*)/ms', $file, $m))
-            ? $m[1]
-            : $file;
+        $markdown = PN_FileReader::ReadContent($this->path);
 
         if ($this->raw) {
             return $markdown;
@@ -450,6 +412,69 @@ class PN_Node
     }
 }
 
+
+class PN_FileReader
+{
+    public static function ReadMeta($path)
+    {
+        return self::ReadFile($path)[0];
+    }
+
+    public static function ReadContent($path)
+    {
+        return self::ReadFile($path)[1];
+    }
+
+    private static function ReadFile($path)
+    {
+        $meta = [];
+        $file = file_get_contents($path);
+
+        $lines = preg_split('/\R/', $file);
+
+        if ($lines[0] === '---') {
+            array_shift($lines);
+            $file = implode("\n", $lines);
+        }
+
+        if (preg_match('/(.*?)^---\s*$/ms', $file, $metaSection)) {
+            preg_match_all('/^(\w+):(.*)$/m', $metaSection[1], $metaAttribs);
+            foreach ($metaAttribs[1] as $i => $key) {
+                $meta[$key] = trim($metaAttribs[2][$i]);
+            }
+        }
+
+        $meta['tags'] = !empty($meta['tags'])
+            ? array_map('trim', explode(',', $meta['tags']))
+            : [];
+
+        if (
+            !empty($meta['date']) &&
+            preg_match(
+                '/(\d{4})[\.\-](\d{2})[\.\-](\d{2})( (\d{2}):(\d{2}))?/',
+                $meta['date'],
+                $dateMatch
+            )
+        ) {
+            $y = $dateMatch[1];
+            $m = $dateMatch[2];
+            $d = $dateMatch[3];
+            $h = !empty($dateMatch[5]) ? $dateMatch[5] : 0;
+            $i = !empty($dateMatch[6]) ? $dateMatch[6] : 0;
+            $meta['date'] = mktime($h, $i, 0, $m, $d, $y);
+        } else {
+            $meta['date'] = filemtime($path);
+        }
+
+        $meta['active'] = empty($meta['active']) || $meta['active'] !== 'false';
+
+        $markdown = (preg_match('/^---\s*$(.*)/ms', $file, $m))
+            ? $m[1]
+            : $file;
+
+        return [$meta, $markdown];
+    }
+}
 
 // -----------------------------------------------------------------------------
 // Router Class - handles routes and dispatch
@@ -488,7 +513,7 @@ class PN_Router
             return !is_int($key);
         }, ARRAY_FILTER_USE_KEY);
 
-        if (call_user_func_array($resolver, $params) !== false) {
+        if (call_user_func_array($resolver, array_values($params)) !== false) {
             return true;
         };
 
